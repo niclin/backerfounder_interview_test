@@ -5,4 +5,4 @@
     <%= link_to "^", upvote_post_path(post), method: :patch %>
   <% end %>
   <%= link_to post.title, post.link_url %></li>
-<span><%= post.point %> points by <%= post.user.name %> <%= link_to "| unvote ", upvote_post_path(post), method: :patch if current_user.upvoted?(post) %>| <%= post.comments.count %> <%= link_to 'comments', post_path(post) %></span>
+<span><%= post.points %> points by <%= post.user.name %> <%= link_to "| unvote ", upvote_post_path(post), method: :patch if current_user.upvoted?(post) %>| <%= post.comments.count %> <%= link_to 'comments', post_path(post) %></span>
