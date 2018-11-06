@@ -26,9 +26,8 @@ class PostsController < ApplicationController
 
   def upvote
     @post = Post.find(params[:id])
-
     if current_user.upvoted?(@post)
-      current_user.votes.find_by(post: @post).destroy
+      current_user.votes.find_by(voteable: @post).destroy
     else
       @vote = @post.votes.new(user: current_user, upvote: true)
       @vote.save

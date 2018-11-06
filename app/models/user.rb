@@ -20,8 +20,8 @@ class User < ApplicationRecord
     self.name = valid_user_name?(email_user_name) ? email_user_name : random_user_name
   end
 
-  def upvoted?(post)
-    votes.exists?(post: post, upvote: true)
+  def upvoted?(voteable)
+    votes.exists?(voteable_id: voteable.id, upvote: true)
   end
 
   private

@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :comments
-  has_many :votes
+  has_many :votes, as: :voteable
 
   def compute_score!
     time = (Time.now - self.created_at) / 3600.0

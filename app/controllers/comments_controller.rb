@@ -26,6 +26,18 @@ class CommentsController < ApplicationController
     end
   end
 
+  def upvote
+    @comment = Comment.find(params[:id])
+    if current_user.upvoted?(@comment)
+      current_user.votes.find_by(voteable: @comment).destroy
+    else
+      @vote = @comment.votes.new(user: current_user, upvote: true)
+      @vote.save
+    end
+
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def comment_params

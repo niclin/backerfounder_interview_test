@@ -1,2 +1,9 @@
-<p><%= comment.body %></p>
+<p>
+  <% if user_signed_in? %>
+    <%= link_to "^", upvote_post_path(post), method: :patch unless current_user.upvoted?(post) %>
+  <% else %>
+    <%= link_to "^", upvote_post_path(post), method: :patch %>
+  <% end %>
+  <%= comment.body %>
+</p>
 <p><%= link_to 'reply', new_comment_path(comment.id) if comment.id.present? %></p>
