@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2018_11_06_103235) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
-    t.integer "point"
+    t.integer "point", default: 0
     t.integer "user_id"
     t.string "link_url"
     t.datetime "created_at", null: false
