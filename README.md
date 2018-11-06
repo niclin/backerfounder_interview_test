@@ -1,3 +1,15 @@
+
+## Setup
+
+- 技術棧 Rails 5.2 + PostgreSQL
+- 有用到 sidekiq 所以要安装 redis `brew install redis`
+
+1. `git clone git@github.com:niclin/backerfounder_interview_test.git`
+2. `rake db:create db:migrate`
+3. `rails server` 啟動後查看 `localhost:3000`
+4. 建立初始 100 筆資料 `rake db:seed`
+5. 執行 sidekiq 確保每分鐘會更新留言和文章的權重分數
+
 # mini Hacker News Clone
 
 複製一個 mini 的 Hacker News，製作簡易可用的推文系統 prototype：
