@@ -1,0 +1,7 @@
+<%= @parent_comment.body %>
+
+<%= simple_form_for [@parent_comment.post, @comment] do |f| %>
+  <%= f.hidden_field :parent_id %>
+  <%= f.input :body %>
+  <%= f.button :submit %>
+<% end %>

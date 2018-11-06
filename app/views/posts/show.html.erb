@@ -2,3 +2,5 @@
   <%= f.input :body %>
   <%= f.button :submit %>
 <% end %>
+
+<%= comments_tree_for @post.comments.hash_tree(limit_depth: 8) %>
