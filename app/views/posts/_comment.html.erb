@@ -1,0 +1,2 @@
+<p><%= comment.body %></p>
+<p><%= link_to 'reply', new_comment_path(comment.id) if comment.id.present? %></p>

@@ -1,7 +1,14 @@
 <p>
   <%= render_upvote_link_by_voteable(comment) %>
+  <strong>
+    <%= comment.user.name %>
+  </strong>
+  <%= time_ago_in_words(comment.created_at) %> ago
 
   <%= link_to "unvote ", upvote_comment_path(comment), method: :patch if user_signed_in? && current_user.upvoted?(comment) %>
-  <%= comment.body %>
+
+  <div class="comment">
+    > <%= comment.body %>
+  </div>
 </p>
 <p><%= link_to 'reply', new_comment_path(comment.id) if comment.id.present? %></p>
