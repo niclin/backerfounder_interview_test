@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :posts, only: [:index, :show] do
+    member do
+      patch :upvote
+    end
     resources :comments, only: [:create]
   end
 
