@@ -1,6 +1,6 @@
 <ol>
   <% @posts.each do |post| %>
     <li><%= link_to post.title, post.link_url %></li>
-    <span><%= post.point %> points by <%= post.user.name %> | xxx <%= link_to 'comments', post_path(post) %></span>
+    <span><%= post.point %> points by <%= post.user.name %> | <%= post.comments.count %> <%= link_to 'comments', post_path(post) %></span>
   <% end %>
 </ol>
