@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_back(fallback_location: root_path, notice: 'Your comment was successfully added!')
+      redirect_to post_path(@post)
     else
       redirect_to root_path
     end
