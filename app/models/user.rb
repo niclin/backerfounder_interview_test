@@ -21,7 +21,7 @@ class User < ApplicationRecord
   end
 
   def upvoted?(voteable)
-    votes.exists?(voteable_id: voteable.id, upvote: true)
+    votes.exists?(voteable: voteable, upvote: true)
   end
 
   private
