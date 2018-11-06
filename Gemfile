@@ -44,6 +44,12 @@ gem 'simple_form'
 
 gem 'counter_culture', '~> 2.0'
 
+group :production, :staging, :development do
+  gem "sidekiq"
+  gem "sidekiq-cron"
+  gem "sidekiq-unique-jobs"
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
