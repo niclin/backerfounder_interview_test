@@ -3,7 +3,7 @@ module ApplicationHelper
     if user_signed_in?
       link_to "^", upvote_path_by_voteable(voteable), method: :patch unless current_user.upvoted?(voteable)
     else
-      link_to "^", new_session_path
+      link_to "^", new_user_session_path
     end
   end
 
