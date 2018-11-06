@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_11_06_103235) do
     t.string "title"
     t.integer "point"
     t.integer "user_id"
+    t.string "link_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
