@@ -4,6 +4,8 @@ class ComputeScore
   sidekiq_options retry: false
 
   def perform
-    Post.find_each(&:compute_score!)
+    [Post, Comment].each do |model|
+      model.find_each(&:compute_score!)
+    end
   end
 end

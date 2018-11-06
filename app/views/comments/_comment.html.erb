@@ -1,9 +1,11 @@
 <p>
   <% if user_signed_in? %>
-    <%= link_to "^", upvote_post_path(post), method: :patch unless current_user.upvoted?(post) %>
+    <%= link_to "^", upvote_comment_path(comment), method: :patch unless current_user.upvoted?(comment) %>
   <% else %>
-    <%= link_to "^", upvote_post_path(post), method: :patch %>
+    <%= link_to "^", upvote_comment_path(comment), method: :patch %>
   <% end %>
+
+  <%= link_to "unvote ", upvote_comment_path(comment), method: :patch if user_signed_in? && current_user.upvoted?(comment) %>
   <%= comment.body %>
 </p>
 <p><%= link_to 'reply', new_comment_path(comment.id) if comment.id.present? %></p>

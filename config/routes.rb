@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  resources :comments, only: [] do
+    member do
+      patch :upvote
+    end
+  end
+
   get '/comments/new/:parent_id', to: 'comments#new', as: :new_comment
 
   root "posts#index"

@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2018_11_06_145655) do
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "votes_count", default: 0
+    t.integer "score", default: 0
   end
 
   create_table "posts", force: :cascade do |t|
