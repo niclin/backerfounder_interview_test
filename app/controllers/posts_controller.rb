@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:upvote]
+  before_action :authenticate_user!, only: [:upvote, :new, :create]
 
   def index
     @posts = Post.includes(:user, :comments).all
@@ -8,6 +8,20 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = @post.comments.new
+  end
+
+  def new
+    @post = Post.new
+  end
+
+  def create
+    @post = current_user.posts.new(post_params)
+
+    if @post.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   def upvote
@@ -21,5 +35,11 @@ class PostsController < ApplicationController
     end
 
     redirect_back(fallback_location: root_path)
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :link_url)
   end
 end
