@@ -1,9 +1,5 @@
 <p>
-  <% if user_signed_in? %>
-    <%= link_to "^", upvote_comment_path(comment), method: :patch unless current_user.upvoted?(comment) %>
-  <% else %>
-    <%= link_to "^", upvote_comment_path(comment), method: :patch %>
-  <% end %>
+  <%= render_upvote_link_by_voteable(comment) %>
 
   <%= link_to "unvote ", upvote_comment_path(comment), method: :patch if user_signed_in? && current_user.upvoted?(comment) %>
   <%= comment.body %>

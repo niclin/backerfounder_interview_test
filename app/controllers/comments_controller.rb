@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
 
     if parent_id_exists?
-      parent = Comment.find_by_id(params[:comment].delete(:parent_id))
+      parent = Comment.find_by_id(params[:comment][:parent_id])
       @comment = parent.children.build(comment_params)
       @comment.post = @post
     else
