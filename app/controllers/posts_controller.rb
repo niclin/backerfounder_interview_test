@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:upvote, :new, :create]
 
   def index
-    @posts = Post.includes(:user, :comments).all
+    @posts = Post.includes(:user, :comments).all.order(score: :desc)
   end
 
   def show
